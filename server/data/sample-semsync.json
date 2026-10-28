@@ -1,0 +1,17 @@
+{
+  "subjects": [
+    { "id": "sample-subject-1", "name": "Database Systems", "color": "#7c3aed" },
+    { "id": "sample-subject-2", "name": "Software Engineering", "color": "#2563eb" }
+  ],
+  "tasks": [
+    {
+      "title": "Submit database design report",
+      "description": "Finalize ER diagram and normalization notes.",
+      "subjectName": "Database Systems",
+      "dueDate": "2026-11-05",
+      "dueTime": "23:59",
+      "priority": "High",
+      "status": "Pending"
+    }
+  ]
+}

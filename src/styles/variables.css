@@ -1,0 +1,84 @@
+/* ================================================
+   src/styles/variables.css
+   Design tokens — colours, spacing, typography, shadows
+   ================================================ */
+
+:root {
+  /* ---- Colours ---- */
+  --color-bg:            #f4f6fa;
+  --color-surface:       #ffffff;
+  --color-border:        #e2e6ee;
+  --color-text-primary:  #1e2330;
+  --color-text-secondary:#6b7280;
+  --color-text-muted:    #9ca3af;
+
+  /* Accent – indigo / blue family */
+  --color-accent:        #4f46e5;
+  --color-accent-light:  #eef2ff;
+  --color-accent-hover:  #4338ca;
+  --color-accent-text:   #ffffff;
+
+  /* Semantic */
+  --color-success:       #16a34a;
+  --color-success-bg:    #f0fdf4;
+  --color-warning:       #d97706;
+  --color-warning-bg:    #fffbeb;
+  --color-danger:        #dc2626;
+  --color-danger-bg:     #fef2f2;
+  --color-info:          #0891b2;
+  --color-info-bg:       #ecfeff;
+
+  /* Priority badges */
+  --priority-high-bg:    #fef2f2;
+  --priority-high-text:  #dc2626;
+  --priority-medium-bg:  #fffbeb;
+  --priority-medium-text:#d97706;
+  --priority-low-bg:     #f0fdf4;
+  --priority-low-text:   #16a34a;
+
+  /* Status badges */
+  --status-pending-bg:    #f3f4f6;
+  --status-pending-text:  #6b7280;
+  --status-progress-bg:   #eef2ff;
+  --status-progress-text: #4f46e5;
+  --status-completed-bg:  #f0fdf4;
+  --status-completed-text:#16a34a;
+
+  /* ---- Typography ---- */
+  --font-family:         'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-size-xs:        0.75rem;    /* 12px */
+  --font-size-sm:        0.8125rem;  /* 13px */
+  --font-size-base:      0.875rem;   /* 14px */
+  --font-size-md:        1rem;       /* 16px */
+  --font-size-lg:        1.125rem;   /* 18px */
+  --font-size-xl:        1.25rem;    /* 20px */
+  --font-size-2xl:       1.5rem;     /* 24px */
+  --font-size-3xl:       1.875rem;   /* 30px */
+
+  /* ---- Spacing ---- */
+  --space-xs:  0.25rem;
+  --space-sm:  0.5rem;
+  --space-md:  0.75rem;
+  --space-base:1rem;
+  --space-lg:  1.25rem;
+  --space-xl:  1.5rem;
+  --space-2xl: 2rem;
+  --space-3xl: 2.5rem;
+
+  /* ---- Radius ---- */
+  --radius-sm:  6px;
+  --radius-md:  10px;
+  --radius-lg:  14px;
+  --radius-full:9999px;
+
+  /* ---- Shadows ---- */
+  --shadow-sm:  0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:  0 2px 8px rgba(0,0,0,0.06);
+  --shadow-lg:  0 4px 16px rgba(0,0,0,0.08);
+
+  /* ---- Layout ---- */
+  --sidebar-width:       256px;
+  --topbar-height:       72px;
+  --transition-fast:     150ms ease;
+  --transition-base:     250ms ease;
+}
