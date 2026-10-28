@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: semsync
+    runtime: node
+    plan: starter
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 24.15.0
+      - key: DATABASE_PATH
+        value: /var/data/semsync.sqlite
+      - key: CLIENT_URL
+        value: https://semsync.onrender.com
+      - key: NODE_ENV
+        value: production
+    disk:
+      name: semsync-data
+      mountPath: /var/data
+      sizeGB: 1

@@ -78,6 +78,38 @@ Foreign key enforcement is enabled with `PRAGMA foreign_keys = ON`.
 - Dashboard: `GET /api/dashboard/stats`, `GET /api/dashboard/today`
 - Reset/JSON: `POST /api/data/reset`, `GET /api/data/export`, `POST /api/data/import`
 
+## Deploy to Render
+
+SemSync is configured as one Render web service. Express serves both the React production build and the API.
+
+1. Push the project to GitHub.
+2. In Render, choose **New > Blueprint**.
+3. Select the repository and approve `render.yaml`.
+4. After the first deployment, use the generated Render URL.
+5. The SQLite database is stored on the `semsync-data` persistent disk at `/var/data/semsync.sqlite`.
+
+A persistent disk may require a paid Render plan. Without a persistent disk, the SQLite file may disappear when Render replaces or redeploys the service, although the application can still run.
+
+Render build command:
+
+```text
+npm install && npm run build
+```
+
+Render start command:
+
+```text
+npm start
+```
+
+No separate frontend or backend services are required. Local development still uses Vite on port 5173 and Express on port 3001.
+
+Production request flow:
+
+```text
+Render URL -> Express -> React files or /api routes -> SQLite persistent disk
+```
+
 ## Setup and launch
 
 Requirements: Node.js 18+ and npm.
