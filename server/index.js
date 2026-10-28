@@ -24,8 +24,14 @@ app.use((req, res, next) => {
 app.use('/api', apiRoutes);
 app.use('/api', dataRoutes);
 
-const clientDirectory = path.join(__dirname, '..', 'dist');
-if (fs.existsSync(clientDirectory)) {
+const clientDirectories = [
+  path.join(__dirname, '..', 'dist'),
+  path.join(__dirname, 'dist')
+];
+const clientDirectory = clientDirectories.find(directory =>
+  fs.existsSync(path.join(directory, 'index.html'))
+);
+if (clientDirectory) {
   app.use(express.static(clientDirectory));
   app.use((req, res, next) => {
     if (req.path.startsWith('/api/')) return next();
