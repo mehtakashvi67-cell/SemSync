@@ -8,6 +8,7 @@
     "build": "npm run build:client && npm run build:server",
     "build:client": "vite build",
     "build:server": "npm install --prefix server",
+    "prestart": "npm run build",
     "lint": "oxlint",
     "preview": "vite preview",
     "start": "npm --prefix server start"
