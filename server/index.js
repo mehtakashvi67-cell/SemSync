@@ -33,7 +33,11 @@ if (fs.existsSync(clientDirectory)) {
   });
 }
 
-app.use((req, res) => res.status(404).json({ error: 'API endpoint not found.' }));
+app.use((req, res) => res.status(404).json({
+  error: 'API endpoint not found.',
+  method: req.method,
+  path: req.originalUrl
+}));
 app.use((err, req, res, _next) => {
   console.error(err);
   res.status(err.status || 500).json({ error: err.message || 'Internal server error.' });
