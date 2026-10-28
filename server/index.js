@@ -12,7 +12,8 @@ const port = process.env.PORT || 3001;
 const allowedOrigins = [process.env.CLIENT_URL, process.env.RENDER_EXTERNAL_URL, 'http://localhost:5173'].filter(Boolean);
 app.use(cors({
   origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) callback(null, true);
+    const isVercelPreview = origin && /^https:\/\/[a-z0-9-]+\.vercel\.app$/i.test(origin);
+    if (!origin || allowedOrigins.includes(origin) || isVercelPreview) callback(null, true);
     else callback(new Error('Origin is not allowed by CORS'));
   }
 }));

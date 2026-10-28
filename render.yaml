@@ -2,9 +2,9 @@ services:
   - type: web
     name: semsync
     runtime: node
-    rootDir: .
+    rootDir: server
     plan: starter
-    buildCommand: npm ci && npm run build
+    buildCommand: npm install
     startCommand: npm start
     healthCheckPath: /api/health
     envVars:
@@ -13,7 +13,7 @@ services:
       - key: DATABASE_PATH
         value: /var/data/semsync.sqlite
       - key: CLIENT_URL
-        value: https://semsync.onrender.com
+        value: https://YOUR-VERCEL-APP.vercel.app
       - key: NODE_ENV
         value: production
     disk:
