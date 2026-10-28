@@ -1,13 +1,33 @@
 const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
+const os = require('os');
 require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
 
-const databasePath = process.env.DATABASE_PATH
-  ? path.resolve(__dirname, '..', process.env.DATABASE_PATH)
-  : path.join(__dirname, '..', 'semsync.sqlite');
+function resolveDatabasePath() {
+  const configuredPath = process.env.DATABASE_PATH
+    ? path.resolve(__dirname, '..', process.env.DATABASE_PATH)
+    : path.join(__dirname, '..', 'semsync.sqlite');
 
-fs.mkdirSync(path.dirname(databasePath), { recursive: true });
+  try {
+    fs.mkdirSync(path.dirname(configuredPath), { recursive: true });
+    return configuredPath;
+  } catch (error) {
+    if (!['EACCES', 'EROFS'].includes(error.code)) {
+      throw error;
+    }
+
+    const fallbackPath = path.join(os.tmpdir(), 'semsync.sqlite');
+    fs.mkdirSync(path.dirname(fallbackPath), { recursive: true });
+    console.warn(
+      `Database directory ${path.dirname(configuredPath)} is not writable. ` +
+      `Using temporary storage at ${fallbackPath}. Configure a writable Render disk for persistent data.`
+    );
+    return fallbackPath;
+  }
+}
+
+const databasePath = resolveDatabasePath();
 const db = new Database(databasePath);
 db.pragma('journal_mode = WAL');
 db.pragma('foreign_keys = ON');
